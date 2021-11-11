@@ -6,3 +6,23 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>
+<div class="container">
+    <div class="row">
+        @for (var i = 0; i < 10; i++)
+        {
+            <div class="col-4 mb-3">
+                <div class="card border-secondary mb-3" style="max-width: 20rem;">
+                    <div class="card-header">1000 руб.</div>
+                    <img src="https://picsum.photos/200/200?random=@(i)" alt="Card image cap">
+                    <div class="card-body">
+                        <h4 class="card-title">Secondary card title</h4>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a class="btn btn-primary text-light" asp-area="" asp-controller="Cards" asp-action="Index" asp-route-id="@i">Подробнее</a>
+                        <a class="btn btn-success text-light" asp-area="" asp-controller="Home" asp-action="Privacy">В избранное</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
