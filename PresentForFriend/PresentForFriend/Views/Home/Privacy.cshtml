@@ -1,6 +1,91 @@
-﻿@{
+﻿@*@{
     ViewData["Title"] = "Privacy Policy";
 }
-<h1>@ViewData["Title"]</h1>
+<h1>@ViewData["Title"]</h1>*@
 
-<p>Use this page to detail your site's privacy policy.</p>
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://bootswatch.com/_vendor/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: rgb(175,238,174);
+        }
+
+        .row {
+            background: white;
+        }
+
+        .btn1 {
+            border: none;
+            outline: none;
+            height: 50px;
+            width: 100%;
+            background-color: white;
+            color: white;
+            border-radius: 4px;
+            font-weight: bold;
+            border: 1px solid;
+            color: black;
+        }
+
+        .btn1:hover {
+            background-color: grey;
+            border: 1px solid;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <section class="Form my-4 mx-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 px-5 pt-5">
+                    <h4 class="font-weight-bold py-3 text-xl-center">С вoзвращением!</h4>
+                    <h5 class="text-xl-center">Мы так рады видеть Вас снова!</h5>
+                    <form>
+                        <div class="form-row">
+                            <div class="col-lg-10">
+                                <p>Email</p>
+                                <input type="email" class="form-control my-3 p-4" />
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col-lg-10">
+                                <p>Пароль</p>
+                                <input type="password" class="form-control my-3 p-4" />
+                                <p>Забыли пароль?</p>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-10">
+                                <button type="button" class="btn1">Войти</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="https://picsum.photos/200/200?random=1" class="card-img-top" alt="...">                 
+                    </div>
+                    <div class="">
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
