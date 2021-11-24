@@ -1,6 +1,9 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -8,9 +11,10 @@ namespace PresentForFriend.Models
 {
     public class Present
     {
+        [Key]
         public int Id { get; set; }
 
-        [Required(ErrorMessage ="Name is required")]
+        [Required(ErrorMessage = "Name is required")]
         [MaxLength(30, ErrorMessage = "Name should contains max 50 characters")]
         public string Name { get; set; }
 
@@ -21,11 +25,17 @@ namespace PresentForFriend.Models
         [Required(ErrorMessage = "Link is required")]
         public string Link { get; set; }
 
-        public string Image { get; set; }
+        [MaxLength(100)]
+        [DisplayName("Image Name")]
+        public string ImageName { get; set; }
+
+        [NotMapped]
+        [Required(ErrorMessage = "Image is required")]
+        [DisplayName("Upload File")]
+        public IFormFile ImageFile { get; set; }
 
         [Required(ErrorMessage = "Price is required")]
         public float Price { get; set; }
         public int UserID { get; set; }
-
     }
 }

@@ -231,8 +231,9 @@ namespace PresentForFriend.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
-                    b.Property<string>("Image")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("ImageName")
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
 
                     b.Property<string>("Link")
                         .IsRequired()
@@ -244,7 +245,6 @@ namespace PresentForFriend.Migrations
                         .HasColumnType("nvarchar(30)");
 
                     b.Property<float>("Price")
-                        .HasMaxLength(6)
                         .HasColumnType("real");
 
                     b.Property<int>("UserID")

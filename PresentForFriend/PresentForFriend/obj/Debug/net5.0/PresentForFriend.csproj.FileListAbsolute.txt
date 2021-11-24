@@ -166,3 +166,4 @@ D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\bin\D
 D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\Debug\net5.0\Razor\Views\MyPresents\Index.cshtml.g.cs
 D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\Debug\net5.0\Razor\Views\MyPresents\Create.cshtml.g.cs
 D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\Debug\net5.0\Razor\Views\MyPresents\Edit.cshtml.g.cs
+D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\Debug\net5.0\Razor\Views\MyPresents\Delete.cshtml.g.cs
