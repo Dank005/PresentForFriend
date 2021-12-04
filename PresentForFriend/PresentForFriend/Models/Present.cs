@@ -36,6 +36,6 @@ namespace PresentForFriend.Models
 
         [Required(ErrorMessage = "Price is required")]
         public float Price { get; set; }
-        public int UserID { get; set; }
+        public string UserID { get; set; }
     }
 }

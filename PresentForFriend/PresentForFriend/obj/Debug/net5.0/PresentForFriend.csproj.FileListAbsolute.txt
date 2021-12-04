@@ -82,7 +82,6 @@ D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\D
 D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\Debug\net5.0\ref\PresentForFriend.dll
 D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\Debug\net5.0\PresentForFriend.pdb
 D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\Debug\net5.0\PresentForFriend.genruntimeconfig.cache
-D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\Debug\net5.0\Razor\Views\Cards\Index.cshtml.g.cs
 D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\Debug\net5.0\Razor\Views\Discussing\Index.cshtml.g.cs
 D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\Debug\net5.0\Razor\Views\Favourites\Index.cshtml.g.cs
 D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\Debug\net5.0\Razor\Views\AddPresent\Index.cshtml.g.cs
@@ -167,3 +166,4 @@ D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\D
 D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\Debug\net5.0\Razor\Views\MyPresents\Create.cshtml.g.cs
 D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\Debug\net5.0\Razor\Views\MyPresents\Edit.cshtml.g.cs
 D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\Debug\net5.0\Razor\Views\MyPresents\Delete.cshtml.g.cs
+D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\Debug\net5.0\Razor\Views\CardInfo\Index.cshtml.g.cs

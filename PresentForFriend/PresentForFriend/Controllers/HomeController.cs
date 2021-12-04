@@ -1,6 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using PresentForFriend.Data;
 using PresentForFriend.Models;
+using PresentForFriend.Service;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -11,16 +14,19 @@ namespace PresentForFriend.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ApplicationDbContext _context;
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
         {
+            _context = context;
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var presents = await _context.Presents.ToListAsync();
+            return View(presents);
         }
 
         public IActionResult Privacy()

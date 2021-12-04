@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using PresentForFriend.Data;
 using PresentForFriend.Models;
+using PresentForFriend.Service;
 using System;
 using System.IO;
 using System.Threading.Tasks;
@@ -13,19 +14,22 @@ namespace PresentForFriend.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _hostEnvironment;
+        private readonly IUserService _userService;
 
         public IWebHostEnvironment HostEnviroment { get; }
 
-        public MyPresentsController(ApplicationDbContext context, IWebHostEnvironment hostEnvironment)
+        public MyPresentsController(ApplicationDbContext context, IWebHostEnvironment hostEnvironment, IUserService userService)
         {
             _context = context;
-            this._hostEnvironment = hostEnvironment;
+            _userService = userService;
+            _hostEnvironment = hostEnvironment;
         }
 
 
         public async Task<IActionResult> Index()
         {
             var presents = await _context.Presents.ToListAsync();
+
             return View(presents);
         }
 
@@ -51,6 +55,7 @@ namespace PresentForFriend.Controllers
                     await present.ImageFile.CopyToAsync(fileStream);
                 }
                 //insert record
+                present.UserID = _userService.GetUserId();
                 _context.Presents.Add(present);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -75,6 +80,7 @@ namespace PresentForFriend.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Present present)
         {
+
             if (!ModelState.IsValid)
                 return View(present);
 
