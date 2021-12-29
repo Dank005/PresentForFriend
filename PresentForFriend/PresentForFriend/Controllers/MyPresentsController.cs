@@ -6,6 +6,7 @@ using PresentForFriend.Models;
 using PresentForFriend.Service;
 using System;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace PresentForFriend.Controllers
@@ -28,7 +29,8 @@ namespace PresentForFriend.Controllers
 
         public async Task<IActionResult> Index()
         {
-            var presents = await _context.Presents.ToListAsync();
+            var UserID = _userService.GetUserId();
+            var presents = await _context.Presents.Where(present=> present.UserID==UserID).ToListAsync();
 
             return View(presents);
         }
@@ -44,7 +46,7 @@ namespace PresentForFriend.Controllers
         {
             if (ModelState.IsValid)
             {
-                //Save image to wwwroot/image
+                //Save image to wwwroot/ image
                 string wwwRootPath = _hostEnvironment.WebRootPath;
                 string fileName = Path.GetFileNameWithoutExtension(present.ImageFile.FileName);
                 string extension = Path.GetExtension(present.ImageFile.FileName);

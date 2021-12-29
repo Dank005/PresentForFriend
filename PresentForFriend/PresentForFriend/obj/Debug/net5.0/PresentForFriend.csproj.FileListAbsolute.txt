@@ -84,7 +84,6 @@ D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\D
 D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\Debug\net5.0\PresentForFriend.genruntimeconfig.cache
 D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\Debug\net5.0\Razor\Views\Discussing\Index.cshtml.g.cs
 D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\Debug\net5.0\Razor\Views\Favourites\Index.cshtml.g.cs
-D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\Debug\net5.0\Razor\Views\AddPresent\Index.cshtml.g.cs
 D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\obj\Debug\net5.0\PresentForFriend.csproj.AssemblyReference.cache
 D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.Design.dll
 D:\С# projects\ASP.NET\PresentForFriend\PresentForFriend\PresentForFriend\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.SqlServer.Design.dll

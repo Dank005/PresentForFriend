@@ -10,8 +10,8 @@ using PresentForFriend.Data;
 namespace PresentForFriend.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211124092216_init")]
-    partial class init
+    [Migration("20211204184704_Favourites")]
+    partial class Favourites
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -249,12 +249,30 @@ namespace PresentForFriend.Migrations
                     b.Property<float>("Price")
                         .HasColumnType("real");
 
-                    b.Property<int>("UserID")
-                        .HasColumnType("int");
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Presents");
+                });
+
+            modelBuilder.Entity("PresentForFriend.Models.PresentForFriend.Models.Favourites", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("PresentId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Favourites");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

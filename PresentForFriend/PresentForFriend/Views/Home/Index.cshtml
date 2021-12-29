@@ -21,7 +21,7 @@
                         <h4 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h4>
                         <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>
                         <a class="btn btn-primary text-light" asp-route-id="@item.Id" asp-controller="CardInfo" asp-action="Index">More..</a>
-                        <a class="btn btn-success text-light" asp-route-id="@item.Id" asp-controller="" asp-action="">To favorites</a>                        
+                        <a class="btn btn-success text-light" asp-route-id="@item.Id" asp-controller="Favourites" asp-action="Add">To favorites</a>                        
                     </div>
                 </div>
             </div>
