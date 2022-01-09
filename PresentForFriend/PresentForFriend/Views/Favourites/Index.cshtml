@@ -15,8 +15,7 @@
             <div class="col-4 mb-3">
                 <div class="card border-secondary mb-3" style="max-width: 20rem;">
                     <div class="card-header">@Html.DisplayFor(modelItem => item.Price)</div>
-                    <img src="@("~/image/" + item.ImageName)" asp-append-version="true" height="300" />
-
+                    <img src="data:image/jpeg;base64,@Convert.ToBase64String(item.DataFiles)" height="300" />
                     <div class="card-body">
                         <h4 class="card-title">@Html.DisplayFor(modelItem => item.Name)</h4>
                         <p class="card-text">@Html.DisplayFor(modelItem => item.Description)</p>

@@ -14,15 +14,9 @@ namespace PresentForFriend.Controllers
             _context = context;
         }
         
-        public async Task<IActionResult> Index(int? id)
+        public async Task<IActionResult> Index(int id)
         {
-            if (id == null || id <= 0)
-                return BadRequest();
-
             var presentInDB = await _context.Presents.FirstOrDefaultAsync(e => e.Id == id);
-
-            if (presentInDB == null)
-                return NotFound();
 
             return View(presentInDB);
         }

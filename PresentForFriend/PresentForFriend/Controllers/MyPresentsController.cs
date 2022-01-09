@@ -7,6 +7,7 @@ using PresentForFriend.Service;
 using System;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace PresentForFriend.Controllers
@@ -30,7 +31,7 @@ namespace PresentForFriend.Controllers
         public async Task<IActionResult> Index()
         {
             var UserID = _userService.GetUserId();
-            var presents = await _context.Presents.Where(present=> present.UserID==UserID).ToListAsync();
+            var presents = await _context.Presents.Where(present=>present.UserID == UserID).ToListAsync();
 
             return View(presents);
         }
@@ -46,34 +47,26 @@ namespace PresentForFriend.Controllers
         {
             if (ModelState.IsValid)
             {
-                //Save image to wwwroot/ image
-                string wwwRootPath = _hostEnvironment.WebRootPath;
-                string fileName = Path.GetFileNameWithoutExtension(present.ImageFile.FileName);
-                string extension = Path.GetExtension(present.ImageFile.FileName);
-                present.ImageName = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                string path = Path.Combine(wwwRootPath + "/image/", fileName);
-                using (var fileStream = new FileStream(path, FileMode.Create))
+                using (var memoryStream = new MemoryStream())
                 {
-                    await present.ImageFile.CopyToAsync(fileStream);
+                    await present.ImageFile.CopyToAsync(memoryStream);
+                    present.DataFiles = memoryStream.ToArray();//массив байтов
                 }
-                //insert record
+
                 present.UserID = _userService.GetUserId();
+
                 _context.Presents.Add(present);
                 await _context.SaveChangesAsync();
+
                 return RedirectToAction(nameof(Index));
             }
+
             return View(present);
         }
 
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || id <= 0)
-                return BadRequest();
-
             var presentInDB = await _context.Presents.FirstOrDefaultAsync(e => e.Id == id);
-
-            if (presentInDB == null)
-                return NotFound();
 
             return View(presentInDB);
         }
@@ -82,25 +75,39 @@ namespace PresentForFriend.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Present present)
         {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        await present.ImageFile.CopyToAsync(memoryStream);
+                        present.DataFiles = memoryStream.ToArray();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    var dataFiles = _context.Presents.Where(el => el.Id == present.Id)
+                        .Select(el => el.DataFiles).FirstOrDefault();
 
-            if (!ModelState.IsValid)
-                return View(present);
+                    present.DataFiles = dataFiles;
+                }
 
-            _context.Presents.Update(present);
-            await _context.SaveChangesAsync();
+                present.UserID = _userService.GetUserId();
 
-            return RedirectToAction(nameof(Index));
+                _context.Presents.Update(present);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(present);
         }
 
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int id)
         {
-            if (id == null || id <= 0)
-                return BadRequest();
 
             var presentInDB = await _context.Presents.FirstOrDefaultAsync(e => e.Id == id);
-
-            if (presentInDB == null)
-                return NotFound();
 
             return View(presentInDB);
         }
@@ -111,14 +118,7 @@ namespace PresentForFriend.Controllers
         {
             var presentInDB = await _context.Presents.FindAsync(present.Id);
 
-            //delete image from wwwroot/image
-            var imagePath = Path.Combine(_hostEnvironment.WebRootPath, "image", presentInDB.ImageName);
-
-            if (System.IO.File.Exists(imagePath))
-                System.IO.File.Delete(imagePath);
-            //delete the record
             _context.Presents.Remove(presentInDB);
-
             await _context.SaveChangesAsync();
 
             return RedirectToAction(nameof(Index));
