@@ -25,6 +25,10 @@ namespace PresentForFriend.Models
         [Required(ErrorMessage = "Link is required")]
         public string Link { get; set; }
 
+        [MaxLength(100)]
+        [DisplayName("Image Name")]
+        public string ImageName { get; set; }
+
         [MaxLength]
         public byte[] DataFiles { get; set; }
 
